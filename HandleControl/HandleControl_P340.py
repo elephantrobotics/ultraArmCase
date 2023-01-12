@@ -41,7 +41,6 @@ def control():
                 mc.set_jog_coord(3, 0, speed)
                 lock.acquire()
                 is_move_jog = True
-                action = 0
                 lock.release()
                 print("z++ ")
                 
@@ -49,7 +48,6 @@ def control():
                 mc.set_jog_coord(3, 1, speed)
                 lock.acquire()
                 is_move_jog = True
-                action = 0
                 lock.release()
                 print("z-- ")
                 
@@ -191,50 +189,20 @@ def main():
                     
                     if i == 1:
                         # print("axis " + str(i) + ": " + str(axis) + " "+str(is_move_jog))
-                        if axis == -3.0517578125e-05 and is_move_jog:
-                            lock.acquire()
-                            action = 15
-                            lock.release()
-                            break
-                        if axis == -3.0517578125e-05:
-                            continue
-                        if axis < -3.0517578125e-05:
+                        if axis < -3.0517578125e-05 and is_move_jog == False:
                             lock.acquire()
                             action = 5
                             lock.release()
-                            if len(axis_list) < 2:
-                                axis_list.append(axis)
-                            else:
-                                # print(axis_list)
-                                
-                                if axis <= axis_list[1] <= axis_list[0]:
-                                    axis_list = []
-                                    break
-                                else:
-                                    lock.acquire()
-                                    action = 15
-                                    lock.release()
-                                    axis_list = []
-                                    break
                             break
-                        if axis > -3.0517578125e-05:
+                        elif axis > -3.0517578125e-05 and is_move_jog == False:
                             lock.acquire()
                             action = 6
                             lock.release()
-                            if len(axis_list) < 2:
-                                axis_list.append(axis)
-                            else:
-                                # print(axis_list)
-                                if axis >= axis_list[1] >= axis_list[0]:
-                                    
-                                    axis_list = []
-                                    break
-                                else:
-                                    lock.acquire()
-                                    action = 15
-                                    lock.release()
-                                    axis_list = []
-                                    break
+                            break
+                        elif axis == -3.0517578125e-05 and action in [5, 6]:
+                            lock.acquire()
+                            action = 15
+                            lock.release()
                             break
                     if i == 4:
                         if axis > 0.9:
@@ -270,7 +238,7 @@ def main():
                 # 获取所有方向键状态信息
                 # for i in range(hats):
                 hat = joystick.get_hat(0)
-                print("hat " + str(i) +": " + str(hat))
+                # print("hat " + str(i) +": " + str(hat))
                 if hat == (0, 1):
                     action = 1
                 elif hat == (0, -1):
