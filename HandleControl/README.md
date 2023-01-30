@@ -27,6 +27,7 @@ mc = ultraArm("com7")
 ```
 
 Finally. run the program.
+![img_en](./control_en.png)
 
 # 使用说明
 
@@ -58,4 +59,4 @@ mc = ultraArm("com7")
 
 最后，运行程序即可。
 
-![home](./control.png)
+![img_zh](./control.png)
