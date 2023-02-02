@@ -72,12 +72,12 @@ Click the button in the upper right corner of the window to switch between langu
 
 6. How to use yolov5.
     After successfully connecting the robotic arm, the algorithm selects 'yolov5'<br>
-   ![image-20230202145832134](AiKit_UI_img/28.png)
+   ![image-20230202145832134](AiKit_UI_img/28.png)<br>
    then turn on the camera<br>
-   ![image-20230202150049121](AiKit_UI_img/29.png)
-   Put in the picture that needs to be recognized, and then click the Cut button<br>![image-20230202150221140](AiKit_UI_img/30.png)
-   Intercept the whiteboard part of the QR code, press Enter to confirm (repeatable interception)<br>![image-20230202150752804](AiKit_UI_img/31.png)
-   Then identify and grab.
+   ![image-20230202150049121](AiKit_UI_img/29.png)<br>
+   Put in the picture that needs to be recognized, and then click the Cut button<br>![image-20230202150221140](AiKit_UI_img/30.png)<br>
+   Intercept the whiteboard part of the QR code, press Enter to confirm (repeatable interception)<br>![image-20230202150752804](AiKit_UI_img/31.png)<br>
+   Then identify and grab.<br>
    
 7. Add a picture for 'Keypoints' <br>
    ![img](./AiKit_UI_img/19.png)
