@@ -1617,8 +1617,8 @@ class AiKit_APP(AiKit_window, QMainWindow, QWidget):
     # Grasping motion
     def moved(self, x, y):
         try:
-            print('x',x)
-            print('y',y)
+            # print('x',x)
+            # print('y',y)
             self.is_crawl = True
             while self.is_pick:
                 QApplication.processEvents()
@@ -2005,23 +2005,23 @@ class AiKit_APP(AiKit_window, QMainWindow, QWidget):
         self.prompts_lab.clear()
         self.offset_change()
         device = self.comboBox_device.currentText()
-        if device == 'myCobot 280 for Pi' or device == 'myCobot 280 for M5':
-            if self.comboBox_function.currentText() == 'yolov5':
-                IS_CV_4 = cv2.__version__[0] == '4'
-                if IS_CV_4:
-                    self.net = cv2.dnn.readNet(self.modelWeights)
-                    '''加载类别名'''
-                    classesFile = self.path[0] + "/yolov5File/coco.names"
-                    self.classes = None
-                    with open(classesFile, 'rt') as f:
-                        self.classes = f.read().rstrip('\n').split('\n')
-                    self.cut_yolov5_img_status(True)
-                else:
-                    self.prompts('Load yolov5 model need the version of opencv is 4.')
-                    self.comboBox_function.setCurrentIndex(0)
-                    self.cut_yolov5_img_status()
+        # if device == 'myCobot 280 for Pi' or device == 'myCobot 280 for M5':
+        if self.comboBox_function.currentText() == 'yolov5':
+            IS_CV_4 = cv2.__version__[0] == '4'
+            if IS_CV_4:
+                self.net = cv2.dnn.readNet(self.modelWeights)
+                '''加载类别名'''
+                classesFile = self.path[0] + "/yolov5File/coco.names"
+                self.classes = None
+                with open(classesFile, 'rt') as f:
+                    self.classes = f.read().rstrip('\n').split('\n')
+                self.cut_yolov5_img_status(True)
             else:
+                self.prompts('Load yolov5 model need the version of opencv is 4.')
+                self.comboBox_function.setCurrentIndex(0)
                 self.cut_yolov5_img_status()
+        else:
+            self.cut_yolov5_img_status()
 
         self.yolov5_count = 0
 
