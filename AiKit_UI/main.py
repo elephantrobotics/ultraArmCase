@@ -1234,6 +1234,10 @@ class AiKit_APP(AiKit_window, QMainWindow, QWidget):
             else:
                 self.myCobot.send_angles(self.move_angles[0], 30)
             self.stop_wait(3)
+            if self.comboBox_function.currentText() == 'yolov5':
+                self.yolov5_is_not_pick = False
+                self.is_yolov5_cut_btn_clicked = False
+                self.yolov5_count += 1
         except Exception as e:
             self.loger.error(str(e))
 
